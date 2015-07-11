@@ -6,13 +6,13 @@ var AudioNode = global.AudioNode;
 var AudioNode$connect;
 var AudioNode$disconnect;
 
-function connect(destination) {
-  var args = [].slice.call(arguments, 1);
+function connect() {
+  var args = [].slice.call(arguments);
 
-  if (typeof destination.__connectFrom === "function") {
-    destination.__connectFrom.apply(destination, [ this ].concat(args));
+  if (args.length && typeof args[0].__connectFrom === "function") {
+    args[0].__connectFrom.apply(args[0], [ this ].concat(args.slice(1)));
   } else {
-    AudioNode$connect.apply(this, [ destination ].concat(args));
+    AudioNode$connect.apply(this, args);
   }
 }
 
@@ -27,7 +27,7 @@ function disconnect() {
 }
 
 function use() {
-  if (typeof AudioNode !== "undefined") {
+  if (typeof AudioNode !== "undefined" && AudioNode.prototype.connect !== connect) {
     AudioNode$connect = AudioNode.prototype.connect;
     AudioNode$disconnect = AudioNode.prototype.disconnect;
 
@@ -37,7 +37,7 @@ function use() {
 }
 
 function unuse() {
-  if (typeof AudioNode !== "undefined") {
+  if (typeof AudioNode !== "undefined" && AudioNode.prototype.connect === connect) {
     AudioNode.prototype.connect = AudioNode$connect;
     AudioNode.prototype.disconnect = AudioNode$disconnect;
   }
