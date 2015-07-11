@@ -1,0 +1,19 @@
+{
+  "name": "@mohayonao/power-audio-node",
+  "description": "enhance the connecting interface for custom AudioNode",
+  "version": "0.1.0",
+  "author": "mohayonao <mohayonao@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/mohayonao/power-audio-node/issues"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "homepage": "https://github.com/mohayonao/power-audio-node/",
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mohayonao/power-audio-node.git"
+  },
+  "scripts": {}
+}
