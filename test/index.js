@@ -32,6 +32,7 @@ CustomAudioNode.prototype.__disconnectFrom = function(source) {
 describe("PowerAudioNode", function() {
   describe("use(): void", function() {
     before(PowerAudioNode.use);
+    before(PowerAudioNode.use);
     it("works", function() {
       var audioContext = new global.AudioContext();
       var oscillator = audioContext.createOscillator();
