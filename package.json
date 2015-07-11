@@ -7,7 +7,21 @@
     "url": "https://github.com/mohayonao/power-audio-node/issues"
   },
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "browserify": "^10.2.4",
+    "eslint": "^0.24.0",
+    "espower-loader": "^0.11.0",
+    "intelli-espower-loader": "^0.7.0",
+    "istanbul": "^0.3.17",
+    "mocha": "^2.2.5",
+    "power-assert": "^0.11.0",
+    "web-audio-test-api": "^0.3.5"
+  },
+  "files": [
+    "package.json",
+    "README.md",
+    "index.js"
+  ],
   "homepage": "https://github.com/mohayonao/power-audio-node/",
   "license": "MIT",
   "main": "index.js",
@@ -15,5 +29,12 @@
     "type": "git",
     "url": "https://github.com/mohayonao/power-audio-node.git"
   },
-  "scripts": {}
+  "scripts": {
+    "build": "browserify index.js --standalone PowerAudioNode -o build/power-audio-node.js",
+    "cover": "istanbul cover --report text --report html _mocha",
+    "lint": "eslint index.js test",
+    "prepublish": "npm run lint && npm run test",
+    "test": "mocha --require intelli-espower-loader",
+    "travis": "npm run lint && npm run test"
+  }
 }
